@@ -1,0 +1,114 @@
+html {
+/*    background-color: lightcyan;*/
+background-image: url("images/tweeterBkg.jpg");
+height: 1000px;
+background-position: center;
+background-repeat: no-repeat; 
+}
+body {
+    
+    margin-top: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 760px;
+    margin: 0 auto;
+    background-color: lightblue;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: .5em 2em;
+    text-align: center;
+}
+#Wrapper{
+        margin-top: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 760px;
+    margin: 0 auto;
+    background-color: lightblue;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: .5em 2em;
+    text-align: center;
+    
+}
+header {
+    margin: 0;
+    border-bottom: 2px solid black;
+}
+header h1 {
+    margin: 0;
+    padding: .5em 0;
+    color: black;
+}
+main {
+    margin: 0;
+}
+table {
+    margin-left: 150px;
+    border: 1px solid black;
+    border-collapse: collapse;
+   
+}
+td, th {
+    border: 1px dashed black;
+    padding: .5em .5em .5em .5em;
+    vertical-align: top;
+    text-align: left;
+}
+form {
+    text-align: right;
+    display: inline-block;
+    margin: 0;
+}
+br {
+    clear: left;
+}
+
+.err {
+    color:red;
+    float: right;
+    width: 200px;
+}
+label {
+    width: 150px;
+  
+}
+input[type="text"]{
+    width: 200px;
+    
+}
+#UsersBox{
+    float:left;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    
+    
+}
+#UserBoxRow{
+    border-bottow: 1px solid black;
+    border-top: 1px solid black;
+    text-align: right;
+    
+}
+
+#UserBoxRow input[type="submit"]{
+    margin-left: 5px;
+}
+.navbar{
+ border: 3px solid black;
+ margin-bottom:15px;
+display:flex;
+flex-direction: row;
+justify-content: center;
+background-image: linear-gradient(#62c6e0, #b6cdd3,#62c6e0);
+}
+.navItem {
+    height:100%;
+   flex-grow: 1;
+   font-color: black;
+}
+.navItem a{
+    color: black;
+}
+#pageTable tr {
+  display: none;
+}
