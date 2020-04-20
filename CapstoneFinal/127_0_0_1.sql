@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2020 at 10:18 PM
+-- Generation Time: Apr 17, 2020 at 12:07 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -40,7 +40,8 @@ CREATE TABLE `books` (
   `ar_points` int(2) NOT NULL,
   `reading_level` int(11) NOT NULL,
   `description` varchar(100) NOT NULL,
-  `num_copies` int(2) NOT NULL
+  `num_copies` int(2) NOT NULL,
+  `checkedout` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
