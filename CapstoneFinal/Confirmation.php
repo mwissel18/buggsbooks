@@ -8,7 +8,7 @@ and open the template in the editor.
     <html>
         <head>
             <meta charset="UTF-8">
-            <title>Tweeter</title>
+            <title>Buggs Books</title>
             <link rel="stylesheet" type="text/css" href="yankee.css"/>
         </head>
         <body>

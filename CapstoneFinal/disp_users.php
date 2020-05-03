@@ -1,43 +1,35 @@
 <?php
 require_once('user_db.php');
 
-$books = book_db::select_all();
+$users = user_db::select_all();
 ?>
 <!DOCTYPE html>
 <html>
 
 
     <head>
-        <title>Von Lau Library</title>
+        <title>Buggs Books</title>
         <link rel="stylesheet" type="text/css" href="yankee.css" />
     </head>
 
 
     <body>
         <?php include("Header.php"); ?>
-        <h2>Book List</h2>
+        <h2>Users List</h2>
         <table>
             <tr>
-                <th>Title:</th>
-                <th>ISBN:</th>
-                <th>Condition:</th>
-                <th>Genre:</th>
-                <th>AR Points:</th>
-                <th>Reading Level:</th>
-                <th>Description:</th>
-                <th>Number of Copies:</th>
+                <th>Username:</th>
+                <th>First Name:</th>
+                <th>Last Name:</th>
+                <th>Email:</th>
             </tr>
 
-            <?php foreach ($books as $book) : ?>
+            <?php foreach ($users as $user) : ?>
                 <tr>
-                    <td><?php echo $book->getTitle(); ?></a></td>
-                    <td><?php echo $book->getISBN(); ?></td>
-                    <td><?php echo $book->getCondition(); ?></td>
-                    <td><?php echo $book->getGenre(); ?></td>
-                    <td><?php echo $book->getARPoints(); ?></td>
-                    <td><?php echo $book->getReadingLevel(); ?></td>
-                    <td><?php echo $book->getDescription(); ?></td>
-                    <td><?php echo $book->getNumCopied(); ?></td>
+                    <td><a href="index.php?action=goToProfile&user=<?php echo $user->getUName(); ?>"><?php echo $user->getUName(); ?></a></td>
+                    <td><?php echo $user->getFName(); ?></td>
+                    <td><?php echo $user->getLName(); ?></td>
+                    <td><?php echo $user->getEmail(); ?></td>
                 </tr>
             <?php endforeach; ?>
         </table>

@@ -37,10 +37,10 @@ CREATE TABLE `books` (
   `book_condition` int(10) NOT NULL,
   `recommended` tinyint(1) NOT NULL,
   `genre` varchar(25) NOT NULL,
-  `ar_points` int(2) NOT NULL,
-  `reading_level` int(11) NOT NULL,
+  `arPoints` int(2) NOT NULL,
+  `readingLevel` int(11) NOT NULL,
   `description` varchar(100) NOT NULL,
-  `num_copies` int(2) NOT NULL,
+  `numCopies` int(2) NOT NULL,
   `checkedout` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

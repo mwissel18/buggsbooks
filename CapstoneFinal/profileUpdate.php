@@ -44,7 +44,7 @@ $currUser = user_db::get_user($_SESSION['uName']);
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Tweeter</title>
+        <title>Buggs Books</title>
         <link rel="stylesheet" type="text/css" href="yankee.css" />
     </head>
     <body>

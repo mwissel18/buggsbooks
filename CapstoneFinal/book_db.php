@@ -1,8 +1,8 @@
 <?php
 
-class user_db {
+class book_db {
 
-    public static function select_all() {
+    public static function select_all_books() {
 
         $db = newDatabase::getDB();
 
@@ -13,7 +13,7 @@ class user_db {
         $book0 = [];
 
         foreach ($books as $value) {
-            $book0[$value['bookID']] = new Book($value['title'], $value['isbn'], $value['book_condition'], $value['recommended'], $value['genre'], $value['ar_points'], $value['reading_level'], $value['description'], $value['num_copies'], $value['checkedout']);
+            $book0[$value['bookID']] = new Book($value['title'], $value['isbn'], $value['condition'], $value['recommended'], $value['genre'], $value['arPoints'], $value['readingLevel'], $value['description'], $value['numCopies'], $value['checkedout']);
         }
         $statement->closeCursor();
         return $book0;
@@ -23,19 +23,19 @@ class user_db {
         $db = newDatabase::getDB();
         /* @var $user User */
         $query = 'INSERT INTO books
-                 (title, isbn, book_condition, recommended, genre, ar_points, reading_level, description, num_copies, checkedout)
+                 (title, isbn, condition, recommended, genre, arPoints, readingLevel, description, numCopies, checkedout)
               VALUES
-                 (:title, :isbn, :book_condition, :recommended, :genre, :ar_points, :reading_level, :description, :num_copies, :checkedout)';
+                 (:title, :isbn, :condition, :recommended, :genre, :arPoints, :readingLevel, :description, :numCopies, :checkedout)';
         $statement = $db->prepare($query);
         $statement->bindValue(':title', $book->getTitle());
         $statement->bindValue(':isbn', $book->getISBN());
-        $statement->bindValue(':book_condition', $book->getCondition());
+        $statement->bindValue(':condition', $book->getCondition());
         $statement->bindValue(':recommended', $book->getRecommended());
         $statement->bindValue(':genre', $book->getGenre());
-        $statement->bindValue(':ar_points', $book->getARPoints());
-        $statement->bindValue(':reading_level', $book->getReadingLevel());
+        $statement->bindValue(':arPoints', $book->getARPoints());
+        $statement->bindValue(':readingLevel', $book->getReadingLevel());
         $statement->bindValue(':description', $book->getDescription());
-        $statement->bindValue(':num_copies', $book->getNumCopies());
+        $statement->bindValue(':numCopies', $book->getNumCopies());
         $statement->bindValue(':checkedout', $book->getCheckedout());
 
         $statement->execute();
@@ -66,33 +66,33 @@ class user_db {
         $query = 'Update books
             set title = :title,
             isbn = :isbn,
-            book_condition = :book_condition,
+            condition = :condition,
             recommended = :recommended,
             genre = :genre,
-            ar_points = :ar_points,
-            reading_level = :reading_level,
+            arPoints = :arPoints,
+            readingLevel = :readingLevel,
             description = :description,
-            num_copies = :num_copies,
+            numCopies = :numCopies,
             checkedout = :checkedout
             where uName = :uName';
 
         $statement = $db->prepare($query);
         $statement->bindValue(':title', $book->getTitle());
         $statement->bindValue(':isbn', $book->getISBN());
-        $statement->bindValue(':book_condition', $book->getCondition());
+        $statement->bindValue(':condition', $book->getCondition());
         $statement->bindValue(':recommended', $book->getRecommended());
         $statement->bindValue(':genre', $book->getGenre());
-        $statement->bindValue(':ar_points', $book->getARPoints());
-        $statement->bindValue(':reading_level', $book->getReadingLevel());
+        $statement->bindValue(':arPoints', $book->getARPoints());
+        $statement->bindValue(':readingLevel', $book->getReadingLevel());
         $statement->bindValue(':description', $book->getDescription());
-        $statement->bindValue(':num_copies', $book->getNumCopies());
+        $statement->bindValue(':numCopies', $book->getNumCopies());
         $statement->bindValue(':checkedout', $book->getCheckedout());
 
         $statement->execute();
         $statement->closeCursor();
     }
 
-    public static function select_all_sorted() {
+    public static function select_all_books_sorted() {
 
         $db = newDatabase::getDB();
 
@@ -104,7 +104,7 @@ class user_db {
         $book0 = [];
 
         foreach ($books as $value) {
-            $book0[$value['bookID']] = new Book($value['title'], $value['isbn'], $value['book_condition'], $value['recommended'], $value['genre'], $value['ar_points'], $value['reading_level'], $value['description'], $value['num_copies'], $value['checkedout']);
+            $book0[$value['bookID']] = new Book($value['title'], $value['isbn'], $value['condition'], $value['recommended'], $value['genre'], $value['arPoints'], $value['readingLevel'], $value['description'], $value['numCopies'], $value['checkedout']);
         }
         $statement->closeCursor();
         return $book0;

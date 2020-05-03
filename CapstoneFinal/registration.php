@@ -32,7 +32,7 @@ $users = user_db::select_all_sorted();
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Tweeter</title>
+        <title>Buggs Books</title>
         <link rel="stylesheet" type="text/css" href="yankee.css" />
     </head>
     <body>

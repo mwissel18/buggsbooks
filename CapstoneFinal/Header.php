@@ -30,6 +30,9 @@
                 <div class="navItem">
                     <a href="index.php?action=logOut">Logout</a>
                </div>
+            <div class="navItem">
+                <a href="index.php/../newBook.php">Add Books</a>
+               </div>
             <?php if ($loggedIn == true) { ?>
             <div class="navItem">
                     <a href="index.php?action=editProfile">Edit Profile</a>

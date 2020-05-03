@@ -1,7 +1,9 @@
 <?php
 
 require 'user_db.php';
+require 'book_db.php';
 require 'newDatabase.php';
+require 'Book.php';
 require 'User.php';
 require 'Comment.php';
 session_start();
@@ -370,6 +372,102 @@ switch ($action) {
     case 'editProfile':
 
         include 'profileUpdate.php';
+
+        die();
+        break;
+    
+    case 'addBook':
+        require_once('book_db.php');
+        //$books = book_db::select_all_sorted();
+        $options = [
+            //DO set a cost factor, experiment to find a number that is sufficiently high but doesn't kill your performance
+            'cost' => 12
+                //DON'T supply your own salt like this, let password_hash do that for you
+                //'salt' => "notgoodnotgoodnotgoodnotgoodnotgood",
+        ];
+
+        $err = [];
+        $welcomeMessage = "";
+        $title = filter_input(INPUT_POST, 'title');
+        $isbn = filter_input(INPUT_POST, 'isbn');
+        $condition = filter_input(INPUT_POST, 'condition');
+        $recommended = filter_input(INPUT_POST, 'recommended');
+        $genre = filter_input(INPUT_POST, 'genre');
+        $arPoints = filter_input(INPUT_POST, 'arPoints');
+        $readingLevel = filter_input(INPUT_POST, 'readingLevel');
+        $description = filter_input(INPUT_POST, 'description');
+        $numCopies = filter_input(INPUT_POST, 'numCopies');
+
+
+        if ($recommended == "yes") 
+        {
+            $recommended = true;
+        }
+        else
+        {
+            $recommended = false;
+        }
+
+//        if ($title == null || $title == "") {
+//            $err['title'] = "Enter a title";
+//        }
+//        if (preg_match('/^[a-zA-Z]/', $title) != 1) {
+//            $err['titlefirstchar'] = "Title must begin with a letter";
+//        }
+//        if (book_db::search_by_title($title) === true) {
+//            $err['NameTaken'] = "Duplicate title, please try again";
+//        }
+//        if (preg_match('/^\d{13}/', $isbn) != 1) {
+//            $err['shortISBN'] = "ISBN must be 13 digits with no dashes or spaces.";
+//        }
+//        if ($genre == null || $genre == "") {
+//            $err['genre'] = "Enter a genre";
+//        }
+//        if (preg_match('/^[a-zA-Z]/', $genre) != 1) {
+//            $err['genrefirstchar'] = "Genre must begin with a letter";
+//        }
+//        if ($arPoints == null || $arPoints == "") {
+//            $err['arPoints'] = "Enter the AR points";
+//        }
+//        if (preg_match('/^[0-9]/', $arPoints) != 1) {
+//            $err['arPointsnum'] = "AR Points must be a number";
+//        }
+//        if (preg_match('/^[0-9]/', $arPoints) != 1) {
+//            $err['arPointsrange'] = "AR Points must be between 1 and ";
+//        }
+//         if ($readingLevel == null || $readingLevel == "") {
+//            $err['readingLevel'] = "Enter the reading level";
+//        }
+//        if (preg_match('/^[0-9]/', $readingLevel) != 1) {
+//            $err['readingLevelnum'] = "Reading level must be a number";
+//        }
+//        if (preg_match('/^[0-9]/', $readingLevel) != 1) {
+//            $err['readingLevelrange'] = "Reading level must be between 1 and ";
+//        }
+//        if ($description == null || $description == "") {
+//            $err['description'] = "Enter a description";
+//        }
+//        if (preg_match('/^[a-zA-Z]/', $description) != 1) {
+//            $err['descriptionfirstchar'] = "Description must begin with a letter";
+//        }
+//        if ($numCopies == null || $numCopies == "") {
+//            $err['numCopies'] = "Enter the number of copies";
+//        }
+//        if (preg_match('/^[0-9]/', $numCopies) != 1) {
+//            $err['numCopiesnum'] = "Number of copies must be a number";
+//        }
+        
+        $checkedout = false;
+
+        if (empty($err)) {
+            $Book = new Book($title, $isbn, $condition, $recommended, $genre, $arPoints, $readingLevel, $description, $numCopies, $checkedout);
+            book_db::insert_books($Book);
+           
+            $welcomeMessage .= "New Book Added" . $title . "!";
+            include 'disp_books.php';
+        } else {
+            include('addBook.php');
+        }
 
         die();
         break;
